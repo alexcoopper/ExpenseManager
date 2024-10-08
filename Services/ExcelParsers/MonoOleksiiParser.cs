@@ -26,9 +26,8 @@ public class MonoOleksiiParser : IExcelParser
             var expense = new Expense
             {
                 Date = DateTime.ParseExact(date, "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture),
-                Category = currentRow.GetCell(1)?.ToString(),
-                Description = currentRow.GetCell(2)?.ToString(),
-                Summ = currentRow.GetCell(4)?.ToString(),
+                Description = currentRow.GetCell(1)?.ToString(),
+                Sum = currentRow.GetCell(4)?.NumericCellValue ?? 0,
                 ExpenseOwner = ExpenseOwner.Oleksii
             };
             expenses.Add(expense);

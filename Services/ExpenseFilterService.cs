@@ -21,8 +21,7 @@ public class ExpenseFilterService
                 {
                     expense.Date.ToString(GoogleSheetsConstants.DateTimeFormat),
                     expense.Description,
-                    expense.Category,
-                    expense.Summ,
+                    expense.Sum,
                     expense.ExpenseOwner.ToString()
                 });
             }

@@ -17,18 +17,20 @@ public class ExcelParserFactory
 
         string identifier = firstCell?.ToString(); // Ensure there's a value in A1
 
-        // Return the correct parser based on the content of A1
-        if (!string.IsNullOrEmpty(identifier) && identifier.Contains("Клієнт: Баланенко Олексій Євгенович"))
+        if (string.IsNullOrEmpty(identifier)) 
         {
-            return new MonoOleksiiParser(workbook); // Return MonoOleksiiParser for this case
+            throw new InvalidOperationException("Unknown Excel format or no matching parser found.");
         }
 
-        // Add more parsers here as you expand
-        // Example:
-        // if (identifier.Contains("Some other client"))
-        // {
-        //     return new SomeOtherParser(workbook);
-        // }
+        if (identifier.Contains("Клієнт: Баланенко Олексій Євгенович"))
+        {
+            return new MonoOleksiiParser(workbook);
+        }
+
+        if (identifier.Contains("Виписка з Ваших карток за період"))
+        {
+            return new PrivatDmytroParser(workbook);
+        }
 
         throw new InvalidOperationException("Unknown Excel format or no matching parser found.");
     }
