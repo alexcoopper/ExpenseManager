@@ -12,7 +12,7 @@ namespace ExpenseManager.Constants
         public const string SheetName = "Full";
         public const int DefaultStartRow = 2; // First data row (assuming headers in row 1)
         public const int DefaultColumnCount = 5; // Default fallback column count
-        public const string DateTimeFormat = "yyyy-MM-dd HH:mm:ss"; // Format for date string
+        public const string DateTimeFormat = "MM/dd/yyyy HH:mm:ss"; // Format for date string
     }
 
 }
