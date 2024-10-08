@@ -21,8 +21,8 @@ namespace ExpenseManager
             {
                 try
                 {
-                    var parser = new ExcelParser();
-                    expenses = parser.ParseExcel(openFileDialog.FileName);
+                    var parser = new ExpenseParser();
+                    expenses = parser.ProcessFile(openFileDialog.FileName);
                     StatusLabel.Content = $"Імпортовано {expenses.Count} записів.";
                 }
                 catch (Exception ex)
