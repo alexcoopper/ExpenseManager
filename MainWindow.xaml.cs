@@ -23,7 +23,7 @@ namespace ExpenseManager
                 {
                     var parser = new ExpenseParser();
                     expenses = parser.ProcessFile(openFileDialog.FileName);
-                    StatusLabel.Content = $"Імпортовано {expenses.Count} записів.";
+                    //StatusLabel.Content = $"Імпортовано {expenses.Count} записів.";
                 }
                 catch (Exception ex)
                 {
@@ -44,12 +44,17 @@ namespace ExpenseManager
             {
                 var googleSheetsService = new GoogleSheetsService();
                 googleSheetsService.WriteDataToSheet(expenses);
-                StatusLabel.Content = "Дані успішно завантажено в Google Sheets!";
+                //StatusLabel.Content = "Дані успішно завантажено в Google Sheets!";
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Помилка під час завантаження: {ex.Message}");
             }
+        }
+
+        private void CloseApp_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
