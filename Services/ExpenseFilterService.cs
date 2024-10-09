@@ -7,13 +7,16 @@ public class ExpenseFilterService
 {
     public List<IList<object>> FilterNewExpenses(List<Expense> newExpenses, IList<IList<object>> existingData)
     {
+        var dateColumnIndex = 0;
+        var expenseOwnerColumnIndex = 3;
+
         var filteredExpenses = new List<IList<object>>();
 
         foreach (var expense in newExpenses)
         {
-            bool exists = existingData.Any(row => row.Count > 4 &&
-                DateTime.Parse(row[0].ToString()) == expense.Date &&
-                row[4].ToString() == expense.ExpenseOwner.ToString());
+            bool exists = existingData.Any(row => row.Count > 3 &&
+                DateTime.Parse(row[dateColumnIndex].ToString()) == expense.Date &&
+                row[expenseOwnerColumnIndex].ToString() == expense.ExpenseOwner.ToString());
 
             if (!exists)
             {
